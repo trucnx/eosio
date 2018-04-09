@@ -3,7 +3,7 @@
 ## EOSIO Helloworld contract
 ---
 
-* [youtube link][1]
+* [Youtube link][1]
 
 ---
 
