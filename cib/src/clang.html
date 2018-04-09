@@ -1,0 +1,574 @@
+<!--
+Copyright 2017-2018 Todd Fleming
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+-->
+
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Clang In Browser</title>
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .flex-col {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #clang-format-result {
+            flex-grow: 5;
+            overflow: hidden;
+        }
+
+        .io {
+            overflow: auto;
+            margin: 0;
+            flex-grow: 5;
+            background-color: black;
+            color: white;
+            font-family: 'Lucida Console', Monaco, monospace;
+            white-space: pre-wrap;
+        }
+
+        .controls {
+            margin: 4px;
+        }
+
+        .controls-border {
+            padding-bottom: 2px;
+            border-bottom: 1px solid black;
+        }
+
+        .right-button {
+            float: right;
+        }
+
+        .source {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #pane-gist-links>div {
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        #runtime-iframe-container {
+            z-index: 41;
+            position: absolute;
+        }
+
+        #runtime-iframe-container iframe {
+            background: white;
+            width: 100%;
+            height: 100%;
+            border: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hidden">
+        <div id="pane-clang" class="flex-col">
+            <div class="controls">
+                <button id="clang-run" onclick="compile()">Compile</button>
+                <button id="clang-save" onclick="saveWasm()">Save</button>
+                <span id="clang-status"></span>
+                <button id="clang-reboot" class="right-button" onclick="clang.reboot()">Reboot</button>
+            </div>
+            <pre id="clang-io" class="io"></pre>
+        </div>
+        <div id="pane-gist-links" class="flex-col">
+            <div>
+                <h3>Emscripten API</h3>
+                <a href="#gist=b7fabe92dd2889ef33375a42701dc66c">Download and display a file</a>
+                <a href="#gist=afca8bfe32656b7c1ca7e1e87c781267">Call a function after a delay</a>
+                <a href="#gist=46d30fc0d68f058e706456ea970e7de6">Run a script</a>
+
+                <h3>Header Libraries</h3>
+                <a href="#gist=8e8e50c560cc3aba165d5ddb4f2c2c16">Boost.Format</a>
+                <a href="#gist=756e6c6e0c4997176bd513cc2071271f">Range v3 comprehensions</a>
+
+                <h3>HTML Integration</h3>
+                <a href="#gist=2f7baf1120967895c2b07b09eddb576c">Custom console</a>
+                <a href="#gist=d9f362c23d17a9199d272f51acbcc32a">Counter: C++ and JS calling into each other</a>
+                <a href="#gist=e4c2cc66a6606aa92ff099c27ee2bd02">Canvas: bouncing lines</a>
+                <a href="#gist=3e3b86b9d70d87a38cc61bfba2f12a79">WebGL: flying bunnies</a>
+            </div>
+        </div>
+        <div id="pane-clang-format" class="flex-col">
+            <div class="controls controls-border">
+                clang-format:
+                <span id="clang-format-status"></span>
+                <button id="clang-format-reboot" class="right-button" onclick="rebootClangFormat()">Reboot</button>
+            </div>
+            <div id="clang-format-result"></div>
+        </div>
+        <div id="pane-runtime" class="flex-col">
+            <div class="controls">
+                <button id="runtime-run" onclick="run()">Run</button>
+                <span id="runtime-status"></span>
+                <button id="runtime-reboot" class="right-button" onclick="runtime.reboot()">Reboot</button>
+            </div>
+            <pre id="runtime-io" class="io"></pre>
+        </div>
+    </div>
+    <div id="runtime-iframe-container"></div>
+
+    <link rel="stylesheet" type="text/css" href="golden-layout/goldenlayout-base.css" />
+    <link rel="stylesheet" type="text/css" href="golden-layout/goldenlayout-light-theme.css" />
+    <script src="jquery-1.11.1.min.js"></script>
+    <script src="golden-layout/goldenlayout.min.js"></script>
+    <script src="monaco-editor/min/vs/loader.js"></script>
+    <script type='text/javascript' src='process-manager.js'></script>
+    <script type='text/javascript'>
+        let exampleCode = `// clang runs in the browser and compiles C++
+// to WebAssembly, which the browser then runs.
+// See https://github.com/tbfleming/cib for known issues.
+// Use https://tbfleming.github.io/cib/eos.html to compile contracts.
+
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+struct S {
+    S() {cout << "Constructed before main()\\n";};
+} s;
+
+int main() {
+    auto strs = vector{"3"s, "2"s, "1"s, "4"s, "but this demo is real."s, "The 🍰 is a lie,"s};
+    sort(begin(strs), end(strs));
+    for (auto s: strs)
+        cout << s << "\\n";
+}
+`
+
+        let scripts = [
+            'process.js',
+            'wasm-tools.js',
+            'runtime.js',
+            'process-runtime.js',
+        ];
+
+        //let scriptPrefix = '<script src="';
+        let scriptPrefix = '<script src="https://cdn.rawgit.com/tbfleming/cib/7b3fb9c7466ffce19484b2e7822e5b3de6e8281b/';
+        let scriptSuffix = '"></' + 'script>';
+        let initScripts = scriptPrefix + scripts.join(scriptSuffix + scriptPrefix) + scriptSuffix;
+
+        let layoutConfig = {
+            settings: {
+                showPopoutIcon: false,
+                showCloseIcon: false,
+            },
+            content: [{
+                type: 'row',
+                content: [{
+                    type: 'column',
+                    content: [{
+                        type: 'stack',
+                        content: [{
+                            type: 'component',
+                            title: 'C++',
+                            isClosable: false,
+                            componentName: 'component',
+                            componentState: { id: 'pane-source', className: 'source' }
+                        }, {
+                            type: 'component',
+                            title: 'HTML',
+                            isClosable: false,
+                            componentName: 'component',
+                            componentState: { id: 'pane-html-source', className: 'source' }
+                        }]
+                    }, {
+                        type: 'component',
+                        title: 'clang',
+                        isClosable: false,
+                        componentName: 'component',
+                        componentState: { id: 'pane-clang' }
+                    }]
+                }, {
+                    type: 'column',
+                    content: [{
+                        type: 'stack',
+                        content: [{
+                            type: 'component',
+                            title: 'Examples',
+                            isClosable: true,
+                            componentName: 'component',
+                            componentState: { id: 'pane-gist-links' }
+                        }, {
+                            type: 'component',
+                            title: 'clang-format',
+                            isClosable: false,
+                            componentName: 'component',
+                            componentState: { id: 'pane-clang-format' }
+                        }]
+                    }, {
+                        type: 'component',
+                        title: 'Output',
+                        isClosable: false,
+                        componentName: 'component',
+                        componentState: { id: 'pane-runtime' }
+                    }]
+                }]
+            }]
+        };
+
+        let layout = new GoldenLayout(layoutConfig);
+        layout.registerComponent('component', function (container, state) {
+            let child = document.getElementById(state.id);
+            if (!child) {
+                child = document.createElement('div');
+                child.className = state.className;
+                child.id = state.id;
+            }
+            container.getElement().get(0).appendChild(child);
+        });
+        layout.init();
+
+        function overlay(srcId, destId) {
+            let src = document.getElementById(srcId);
+            let dest = document.getElementById(destId);
+            function getBounds(e) {
+                if (e.closest(".lm_dragProxy") || !dest.childElementCount)
+                    return { left: 0, top: 0, width: 0, height: 0 };
+                else
+                    return e.getBoundingClientRect();
+            }
+            let lastR = getBounds(src);
+            function doit() {
+                let r = getBounds(src);
+                if (r.left != lastR.left || r.top != lastR.top || r.width != lastR.width || r.height != lastR.height) {
+                    lastR = r;
+                    dest.style.left = r.left + 'px';
+                    dest.style.top = r.top + 'px';
+                    dest.style.width = r.width + 'px';
+                    dest.style.height = r.height + 'px';
+                }
+                requestAnimationFrame(doit);
+            }
+            doit();
+        }
+        overlay('runtime-io', 'runtime-iframe-container');
+
+        let editor;
+        let htmlEditor;
+        let formatEditor;
+        let editorContent = exampleCode;
+        let prevEditorContent = '';
+        let htmlContent = '';
+
+        require.config({ paths: { 'vs': 'monaco-editor/min/vs' } });
+        require(['vs/editor/editor.main'], function () {
+            editor = monaco.editor.create(document.getElementById('pane-source'), {
+                value: exampleCode,
+                language: 'cpp',
+                automaticLayout: true,
+            });
+            htmlEditor = monaco.editor.create(document.getElementById('pane-html-source'), {
+                language: 'html',
+                automaticLayout: true,
+            });
+            formatEditor = monaco.editor.create(document.getElementById('clang-format-result'), {
+                language: 'cpp',
+                automaticLayout: true,
+                readOnly: true,
+            });
+
+            let changeTimer = -1;
+            function codeChanged() {
+                changeTimer = -1;
+                editorContent = editor.getValue();
+                updateUI();
+            }
+            editor.onDidChangeModelContent(e => {
+                if (changeTimer !== -1)
+                    clearTimeout(changeTimer);
+                changeTimer = setTimeout(codeChanged, 100);
+            });
+
+            htmlEditor.onDidChangeModelContent(e => {
+                htmlContent = htmlEditor.getValue().trim();
+                updateUI();
+            })
+
+            updateUI();
+        });
+
+        class ProcessUI {
+            constructor(name) {
+                this.name = name;
+                this.runButton = document.getElementById(name + '-run');
+                this.rebootButton = document.getElementById(name + '-reboot');
+                this.statusElem = document.getElementById(name + '-status');
+                this.ioElem = document.getElementById(name + '-io');
+                this.iframeContainer = document.getElementById(name + '-iframe-container');
+                this.state = '';
+                this.wasReady = false;
+
+                this.process = new ProcessManager(name, name)
+                this.process.setStatus = this.setStatus.bind(this);
+                this.process.print = this.print.bind(this);
+                this.process.printErr = this.printErr.bind(this);
+            }
+
+            reboot() {
+                this.process.terminate();
+                if (this.ioElem)
+                    this.ioElem.textContent = '';
+                this.process.start();
+            }
+
+            setStatus(state, status) {
+                console.log(this.name, state + ':', status);
+                this.statusElem.textContent = status;
+                this.state = state;
+                if (state == 'ready')
+                    this.statusElem.style.color = 'green';
+                else if (state == 'error')
+                    this.statusElem.style.color = 'red';
+                else
+                    this.statusElem.style.color = 'blue';
+                updateUI();
+            };
+
+            print({ text }) {
+                if (this.ioElem)
+                    this.ioElem.textContent += text + '\n';
+                else
+                    console.log(this.name, 'stdout:', text);
+            };
+
+            printErr({ text }) {
+                if (this.ioElem)
+                    this.ioElem.textContent += text + '\n';
+                else
+                    console.log(this.name, 'stderr:', text);
+            };
+        } // class ProcessUI
+
+        let clangFormat = new ProcessUI('clang-format');
+        let clang = new ProcessUI('clang');
+        let runtime = new ProcessUI('runtime');
+        let saveButton = document.getElementById('clang-save');
+        let clangOutput = null;
+        let iframe = null;
+
+        clangFormat.process.workerFormatDone = args => {
+            clangFormat.process.setStatus('ready', 'Ready');
+            formatEditor.setValue(args.result);
+        };
+
+        clang.process.print({ text: 'Preparing clang...\n\n' });
+        clang.process.workerCompileDone = args => {
+            if (args.result)
+                clang.ioElem.textContent += 'wasm size: ' + args.result.length + '\n';
+            clangOutput = args.result;
+            clang.process.setStatus('ready', 'Ready');
+        };
+
+        runtime.process.print({ text: 'Preparing runtime...\n\n' });
+        runtime.process.workerRunDone = args => {
+            runtime.process.setStatus('ready', 'Ready');
+        };
+        runtime.process.workerDebugReplaceBinary = args => {
+            clang.ioElem.textContent += 'new size:  ' + args.newBinary.length + '\n';
+            clangOutput = args.newBinary;
+            updateUI();
+        };
+        runtime.process.workerSendRun = function () {
+            runtime.ioElem.textContent = '';
+            runtime.process.setStatus('busy', 'Running');
+            runtime.process.postMessage({
+                function: 'run',
+                wasmBinary: clangOutput,
+            });
+        };
+
+        clangFormat.process.start();
+        clang.process.start();
+        runtime.process.start();
+
+        function rebootClangFormat() {
+            prevEditorContent = '';
+            if (formatEditor)
+                formatEditor.setValue('');
+            clangFormat.reboot();
+        }
+
+        function compile() {
+            if (clang.state !== 'ready')
+                return;
+            clangOutput = null;
+            clang.process.setStatus('busy', 'Running');
+            clang.ioElem.textContent = '';
+            clang.process.worker.postMessage({
+                function: 'compile',
+                code: editor.getValue(),
+            });
+        }
+
+        function saveWasm() {
+            let blob = new Blob([clangOutput], {
+                "type": "application/binary"
+            });
+            let a = document.createElement("a");
+            a.download = 'user.wasm';
+            a.href = URL.createObjectURL(blob);
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function run() {
+            if (htmlContent.length) {
+                if (iframe)
+                    runtime.iframeContainer.removeChild(iframe);
+                iframe = document.createElement('iframe');
+                iframe.sandbox = 'allow-forms allow-pointer-lock allow-scripts';
+                iframe.src = "about:blank";
+                iframe.srcdoc = htmlContent.replace('%init-scripts%', initScripts);
+                runtime.iframeContainer.appendChild(iframe);
+                runtime.process.start(iframe);
+            } else {
+                runtime.ioElem.textContent = '';
+                runtime.process.setStatus('busy', 'Running');
+                runtime.process.worker.postMessage({
+                    function: 'run',
+                    wasmBinary: clangOutput,
+                });
+            }
+        }
+
+        let currentGistID = '';
+        async function loadGist(gistID) {
+            if (gistID === currentGistID)
+                return;
+            if (!editor) {
+                setTimeout(() => loadGist(gistID), 200);
+                return;
+            }
+            currentGistID = gistID;
+            try {
+                let gistResponse = await fetch('https://api.github.com/gists/' + gistID);
+                let gistJson = await gistResponse.json();
+                if (gistResponse.status !== 200)
+                    if (gistJson && gistJson.message)
+                        throw new Error(gistJson.message);
+                    else
+                        throw new Error('an error occured')
+                if (!('main.cpp' in gistJson.files))
+                    throw new Error('main.cpp missing');
+                let codeResponse = await fetch(gistJson.files['main.cpp'].raw_url);
+                if (codeResponse.status !== 200)
+                    throw new Error('an error occured')
+                let text = await codeResponse.text();
+                editor.executeEdits(gistID, [{ identifier: 'delete', range: new monaco.Range(1, 1, 10000, 1), text: '', forceMoveMarkers: true }]);
+                editor.executeEdits(gistID, [{ identifier: 'insert', range: new monaco.Range(1, 1, 1, 1), text, forceMoveMarkers: true }]);
+                editor.setSelection(new monaco.Range(0, 0, 0, 0));
+
+                if ('main.html' in gistJson.files) {
+                    let codeResponse = await fetch(gistJson.files['main.html'].raw_url);
+                    if (codeResponse.status !== 200)
+                        throw new Error('an error occured')
+                    let text = await codeResponse.text();
+                    htmlEditor.executeEdits(gistID, [{ identifier: 'delete', range: new monaco.Range(1, 1, 10000, 1), text: '', forceMoveMarkers: true }]);
+                    htmlEditor.executeEdits(gistID, [{ identifier: 'insert', range: new monaco.Range(1, 1, 1, 1), text, forceMoveMarkers: true }]);
+                    htmlEditor.setSelection(new monaco.Range(0, 0, 0, 0));
+                } else {
+                    htmlEditor.executeEdits(gistID, [{ identifier: 'delete', range: new monaco.Range(1, 1, 10000, 1), text: '', forceMoveMarkers: true }]);
+                    htmlEditor.setSelection(new monaco.Range(0, 0, 0, 0));
+                }
+            } catch (e) {
+                clang.ioElem.textContent += '\ngist ' + gistID + ': ' + e.message + '\n';
+            }
+        }
+
+        function handleHash() {
+            for (let arg of window.location.hash.substr(1).split('&'))
+                if (arg.startsWith('gist='))
+                    loadGist(encodeURIComponent(arg.substr(5)));
+        }
+        handleHash();
+        window.addEventListener("hashchange", handleHash, false);
+
+        function updateUI() {
+            let clangReady = editor && clang.state === 'ready';
+            clang.runButton.disabled = !clangReady;
+            saveButton.disabled = !clangOutput;
+            if (clangReady && !clang.wasReady) {
+                clang.wasReady = true;
+                clang.ioElem.textContent = 'Click the compile button\n\n';
+            }
+
+            if (htmlContent.length) {
+                runtime.runButton.textContent = 'Reboot/Run';
+                runtime.rebootButton.disabled = true;
+            } else {
+                runtime.runButton.textContent = 'Run';
+                runtime.rebootButton.disabled = false;
+            }
+
+            if ((iframe || runtime.process.iframe) && !htmlContent.length) {
+                if (iframe)
+                    runtime.iframeContainer.removeChild(iframe);
+                iframe = null;
+                runtime.ioElem.textContent = '';
+                runtime.state = '';
+                runtime.process.start();
+            }
+
+            let runtimeReady = iframe || runtime.state === 'ready';
+            runtime.runButton.disabled = !runtimeReady || !clangOutput;
+            if (runtimeReady && !runtime.wasReady) {
+                runtime.wasReady = true;
+                runtime.ioElem.textContent = 'Click the compile button then the run button\n\n';
+            }
+
+            if (clangFormat.state === 'ready' && editorContent !== prevEditorContent && editor && formatEditor) {
+                prevEditorContent = editorContent;
+                clangFormat.process.setStatus('busy', 'Running');
+                clangFormat.process.worker.postMessage({
+                    function: 'format',
+                    code: editor.getValue(),
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
