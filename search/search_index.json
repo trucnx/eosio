@@ -51,6 +51,21 @@
             "title": "Test Development enviroment"
         }, 
         {
+            "location": "/getting_started/index.html", 
+            "text": "Getting started\n\n\nEOSIO Helloworld contract\n\n\n\n\n\n\nyoutube link", 
+            "title": "Getting started"
+        }, 
+        {
+            "location": "/getting_started/index.html#getting-started", 
+            "text": "", 
+            "title": "Getting started"
+        }, 
+        {
+            "location": "/getting_started/index.html#eosio-helloworld-contract", 
+            "text": "youtube link", 
+            "title": "EOSIO Helloworld contract"
+        }, 
+        {
             "location": "/about/index.html", 
             "text": "TrucNguyen\n\n\n\n\n\n\nIt doesn't matter how slowly you go, so long as you do not stop.", 
             "title": "About"
