@@ -4,7 +4,7 @@
 
 ## Window
 
-* Setup virtual box On Window [EOSIO dawn3][1] setup env on Virtual box, download source [ubuntu iso][2]
+* Setting up a Virtual Machine and [EOSIO dawn3][1], ubuntu iso [ubuntu iso][2]
 
 * [EOS.IO development on window][3] (ubuntu on window)
 
