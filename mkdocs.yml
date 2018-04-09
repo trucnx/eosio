@@ -1,6 +1,9 @@
 site_name: EOSIO
 pages:
     - Home: index.md
+    - Setup Guide: setup.md
     - About: about.md
-theme: readthedocs
+theme:
+  name: 'material'
+
 
