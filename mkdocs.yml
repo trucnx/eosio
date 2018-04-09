@@ -2,6 +2,7 @@ site_name: EOSIO
 pages:
     - Home: index.md
     - Setup: setup.md
+    - Getting started: getting_started.md    
     - About: about.md
 theme:
   name: 'material'
