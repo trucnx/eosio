@@ -17,7 +17,7 @@
         }, 
         {
             "location": "/setup/index.html", 
-            "text": "Setting Up A Local Environment \nfor EOSIO\n\n\n\n\nWindow\n\n\n\n\n\n\nSetting up a Virtual Machine and \nEOSIO dawn3\n, ubuntu iso \nubuntu iso\n\n\n\n\n\n\nEOS.IO development on window\n (ubuntu on window)\n\n\n\n\n\n\nUbuntu 16.04\n\n\n\n\n\n\nManual installation\n of the dependencies:\n\n\n\n\n\n\nBuild EOS\n and run a node:\n\n\n\n\n\n\nMacOS\n\n\n\n\n\n\nManual installation\n of the dependencies:\n\n\n\n\n\n\nBuild EOS\n and run a node:\n\n\n\n\n\n\nDocker\n\n\n\n\nFor running docker\n\n\n\n\nTest Development enviroment\n\n\n\n\nTest Development enviroment", 
+            "text": "Setting Up A Local Environment \nfor EOSIO\n\n\n\n\nWindow\n\n\n\n\n\n\nSetting up a Virtual Machine and \nEOSIO dawn3\n, \nubuntu iso\n\n\n\n\n\n\nEOS.IO development on window\n (ubuntu on window)\n\n\n\n\n\n\nUbuntu 16.04\n\n\n\n\n\n\nManual installation\n of the dependencies:\n\n\n\n\n\n\nBuild EOS\n and run a node:\n\n\n\n\n\n\nMacOS\n\n\n\n\n\n\nManual installation\n of the dependencies:\n\n\n\n\n\n\nBuild EOS\n and run a node:\n\n\n\n\n\n\nDocker\n\n\n\n\nFor running docker\n\n\n\n\nTest Development enviroment\n\n\n\n\nTest Development enviroment", 
             "title": "Setup"
         }, 
         {
@@ -27,7 +27,7 @@
         }, 
         {
             "location": "/setup/index.html#window", 
-            "text": "Setting up a Virtual Machine and  EOSIO dawn3 , ubuntu iso  ubuntu iso    EOS.IO development on window  (ubuntu on window)", 
+            "text": "Setting up a Virtual Machine and  EOSIO dawn3 ,  ubuntu iso    EOS.IO development on window  (ubuntu on window)", 
             "title": "Window"
         }, 
         {
