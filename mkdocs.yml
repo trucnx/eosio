@@ -1,0 +1,7 @@
+site_name: EOSIO
+pages:
+    - Home: index.md
+    - About: about.md
+markdown_extensions:
+  - pymdownx.superfences
+
