@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/index.html", 
-            "text": "Welcome \nto EOSIO Blockchain Team\n\n\nContribute by TrucNguyen\n\n\n\n\n\n\n\n\nSetting Up A Local Environment\n\n\n\n\n\n\nProject layout", 
+            "text": "Welcome \nto EOSIO Blockchain Team\n\n\nContributor by TrucNguyen\n\n\n\n\n\n\n\n\nSetting Up A Local Environment\n\n\n\n\n\n\nProject layout", 
             "title": "Home"
         }, 
         {
@@ -11,9 +11,9 @@
             "title": "Welcome to EOSIO Blockchain Team"
         }, 
         {
-            "location": "/index.html#contribute-by-trucnguyen", 
+            "location": "/index.html#contributor-by-trucnguyen", 
             "text": "Setting Up A Local Environment    Project layout", 
-            "title": "Contribute by TrucNguyen"
+            "title": "Contributor by TrucNguyen"
         }, 
         {
             "location": "/setup/index.html", 
