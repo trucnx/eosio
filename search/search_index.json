@@ -22,8 +22,8 @@
         }, 
         {
             "location": "/setup/index.html", 
-            "text": "Setup guideline \nfor EOSIO\n\n\nWindow\n\n\n\n\n\n\nSetup virtual box On Window \nEOSIO dawn3\n setup env on Virtual box, refer \nubuntu iso\n\n\n\n\n\n\nEOS.IO development on window\n (ubuntu on window)\n\n\n\n\n\n\n\n\n\n\n\n\nUbuntu 16.04\n\n\nManual installation of the dependencies: \n    https://github.com/EOSIO/eos/wiki/Local-Environment\u2026\n\nBuild EOS and run a node: \n    https://github.com/EOSIO/eos/wiki/Local-Environment\u2026\n\n\n\n\n\n\n\nMacOS\n\n\nhttps://github.com/EOSIO/eos/wiki/Local-Environment\u2026\n\nBuild EOS and run a node: \n    https://github.com/EOSIO/eos/wiki/Local-Environment\u2026\n\n\n\n\n\n\n\nDocker\n\n\nhttps://github.com/EOSIO/eos/wiki/Local-Environment#3-docker\n\n\n\n\n\n\n\nVerify dev env\n\n\nhttps://github.com/\u2026/Tutorial-Getting-Started-With-Contracts", 
-            "title": "Development ENV"
+            "text": "Setup guideline \nfor EOSIO\n\n\nWindow\n\n\n\n\n\n\nSetup virtual box On Window \nEOSIO dawn3\n setup env on Virtual box, download source \nubuntu iso\n\n\n\n\n\n\nEOS.IO development on window\n (ubuntu on window)\n\n\n\n\n\n\nUbuntu 16.04\n\n\n\n\n\n\nManual installation\n of the dependencies:\n\n\n\n\n\n\nBuild EOS\n and run a node:\n\n\n\n\n\n\nMacOS\n\n\n\n\n\n\nManual installation\n of the dependencies:\n\n\n\n\n\n\nBuild EOS\n and run a node:\n\n\n\n\n\n\nDocker\n\n\n\n\nFor running docker\n\n\n\n\nTest Development enviroment\n\n\n\n\nTest Development enviroment", 
+            "title": "Setup"
         }, 
         {
             "location": "/setup/index.html#setup-guideline-for-eosio", 
@@ -32,8 +32,28 @@
         }, 
         {
             "location": "/setup/index.html#window", 
-            "text": "Setup virtual box On Window  EOSIO dawn3  setup env on Virtual box, refer  ubuntu iso    EOS.IO development on window  (ubuntu on window)       Ubuntu 16.04  Manual installation of the dependencies: \n    https://github.com/EOSIO/eos/wiki/Local-Environment\u2026\n\nBuild EOS and run a node: \n    https://github.com/EOSIO/eos/wiki/Local-Environment\u2026    MacOS  https://github.com/EOSIO/eos/wiki/Local-Environment\u2026\n\nBuild EOS and run a node: \n    https://github.com/EOSIO/eos/wiki/Local-Environment\u2026    Docker  https://github.com/EOSIO/eos/wiki/Local-Environment#3-docker    Verify dev env  https://github.com/\u2026/Tutorial-Getting-Started-With-Contracts", 
+            "text": "Setup virtual box On Window  EOSIO dawn3  setup env on Virtual box, download source  ubuntu iso    EOS.IO development on window  (ubuntu on window)", 
             "title": "Window"
+        }, 
+        {
+            "location": "/setup/index.html#ubuntu-1604", 
+            "text": "Manual installation  of the dependencies:    Build EOS  and run a node:", 
+            "title": "Ubuntu 16.04"
+        }, 
+        {
+            "location": "/setup/index.html#macos", 
+            "text": "Manual installation  of the dependencies:    Build EOS  and run a node:", 
+            "title": "MacOS"
+        }, 
+        {
+            "location": "/setup/index.html#docker", 
+            "text": "For running docker", 
+            "title": "Docker"
+        }, 
+        {
+            "location": "/setup/index.html#test-development-enviroment", 
+            "text": "Test Development enviroment", 
+            "title": "Test Development enviroment"
         }, 
         {
             "location": "/about/index.html", 
