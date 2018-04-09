@@ -1,8 +1,9 @@
-# Welcome to EOSIO Blockchain Team
+# Welcome <small>to EOSIO Blockchain Team</small>
 
-Contribute by TrucNguyen
+## Contribute by TrucNguyen
 
-## EOSIO Setup Guideline
 
-## Project layout
+* Setting Up A Local Environment
+
+* Project layout
 

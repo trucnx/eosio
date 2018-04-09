@@ -1,4 +1,4 @@
-# Setup guideline <small>for EOSIO</small>
+# Setting Up A Local Environment <small>for EOSIO</small>
 
 ## Window
 
