@@ -1,6 +1,6 @@
 # Welcome <small>to EOSIO Blockchain Team</small>
 
-## Contribute by TrucNguyen
+## Contributor by TrucNguyen
 
 ---
 
