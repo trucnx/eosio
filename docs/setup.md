@@ -1,5 +1,4 @@
 # Setting Up A Local Environment <small>for EOSIO</small>
-
 ---
 
 ## Window
