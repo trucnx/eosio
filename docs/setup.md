@@ -4,8 +4,7 @@
     
     Setup on virtual box (Window)
         
-        EOSIO dawn3 setup env on Virtual box
-            https://www.youtube.com/watch?v=glB6UPHo1rA
+        [EOSIO dawn3 setup env on Virtual box] (https://www.youtube.com/watch?v=glB6UPHo1rA)
             ubuntu iso : http://releases.ubuntu.com/16.04.4/
 
         EOS.IO development on window (ubuntu on window): https://goo.gl/SmRHWR
