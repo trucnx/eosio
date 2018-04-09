@@ -1,7 +1,7 @@
 site_name: EOSIO
 pages:
     - Home: index.md
-    - Development ENV: setup.md
+    - Setup: setup.md
     - About: about.md
 theme:
   name: 'material'
