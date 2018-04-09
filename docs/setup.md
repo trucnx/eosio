@@ -1,5 +1,7 @@
 # Setting Up A Local Environment <small>for EOSIO</small>
 
+---
+
 ## Window
 
 * Setup virtual box On Window [EOSIO dawn3][1] setup env on Virtual box, download source [ubuntu iso][2]
@@ -28,6 +30,8 @@
 ## Test Development enviroment
 
 * [Test Development enviroment][9]
+
+---
 
 [![Material for MkDocs](assets/images/material.png)](assets/images/material.png)
 

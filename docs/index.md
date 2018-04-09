@@ -2,6 +2,7 @@
 
 ## Contribute by TrucNguyen
 
+---
 
 * Setting Up A Local Environment
 
