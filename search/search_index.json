@@ -2,33 +2,28 @@
     "docs": [
         {
             "location": "/index.html", 
-            "text": "Welcome to EOSIO Blockchain Team\n\n\nContribute by TrucNguyen\n\n\nEOSIO Setup Guideline\n\n\nProject layout", 
+            "text": "Welcome \nto EOSIO Blockchain Team\n\n\nContribute by TrucNguyen\n\n\n\n\n\n\nSetting Up A Local Environment\n\n\n\n\n\n\nProject layout", 
             "title": "Home"
         }, 
         {
             "location": "/index.html#welcome-to-eosio-blockchain-team", 
-            "text": "Contribute by TrucNguyen", 
+            "text": "", 
             "title": "Welcome to EOSIO Blockchain Team"
         }, 
         {
-            "location": "/index.html#eosio-setup-guideline", 
-            "text": "", 
-            "title": "EOSIO Setup Guideline"
-        }, 
-        {
-            "location": "/index.html#project-layout", 
-            "text": "", 
-            "title": "Project layout"
+            "location": "/index.html#contribute-by-trucnguyen", 
+            "text": "Setting Up A Local Environment    Project layout", 
+            "title": "Contribute by TrucNguyen"
         }, 
         {
             "location": "/setup/index.html", 
-            "text": "Setup guideline \nfor EOSIO\n\n\nWindow\n\n\n\n\n\n\nSetup virtual box On Window \nEOSIO dawn3\n setup env on Virtual box, download source \nubuntu iso\n\n\n\n\n\n\nEOS.IO development on window\n (ubuntu on window)\n\n\n\n\n\n\nUbuntu 16.04\n\n\n\n\n\n\nManual installation\n of the dependencies:\n\n\n\n\n\n\nBuild EOS\n and run a node:\n\n\n\n\n\n\nMacOS\n\n\n\n\n\n\nManual installation\n of the dependencies:\n\n\n\n\n\n\nBuild EOS\n and run a node:\n\n\n\n\n\n\nDocker\n\n\n\n\nFor running docker\n\n\n\n\nTest Development enviroment\n\n\n\n\nTest Development enviroment", 
+            "text": "Setting Up A Local Environment \nfor EOSIO\n\n\nWindow\n\n\n\n\n\n\nSetup virtual box On Window \nEOSIO dawn3\n setup env on Virtual box, download source \nubuntu iso\n\n\n\n\n\n\nEOS.IO development on window\n (ubuntu on window)\n\n\n\n\n\n\nUbuntu 16.04\n\n\n\n\n\n\nManual installation\n of the dependencies:\n\n\n\n\n\n\nBuild EOS\n and run a node:\n\n\n\n\n\n\nMacOS\n\n\n\n\n\n\nManual installation\n of the dependencies:\n\n\n\n\n\n\nBuild EOS\n and run a node:\n\n\n\n\n\n\nDocker\n\n\n\n\nFor running docker\n\n\n\n\nTest Development enviroment\n\n\n\n\nTest Development enviroment", 
             "title": "Setup"
         }, 
         {
-            "location": "/setup/index.html#setup-guideline-for-eosio", 
+            "location": "/setup/index.html#setting-up-a-local-environment-for-eosio", 
             "text": "", 
-            "title": "Setup guideline for EOSIO"
+            "title": "Setting Up A Local Environment for EOSIO"
         }, 
         {
             "location": "/setup/index.html#window", 
@@ -57,18 +52,13 @@
         }, 
         {
             "location": "/about/index.html", 
-            "text": "TrucNguyen\n\n\nIt doesn't matter how slowly you go, so long as you do not stop.", 
+            "text": "TrucNguyen\n\n\n\n\nIt doesn't matter how slowly you go, so long as you do not stop.", 
             "title": "About"
         }, 
         {
             "location": "/about/index.html#trucnguyen", 
-            "text": "", 
+            "text": "It doesn't matter how slowly you go, so long as you do not stop.", 
             "title": "TrucNguyen"
-        }, 
-        {
-            "location": "/about/index.html#it-doesnt-matter-how-slowly-you-go-so-long-as-you-do-not-stop", 
-            "text": "", 
-            "title": "It doesn't matter how slowly you go, so long as you do not stop."
         }
     ]
 }
