@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/index.html", 
-            "text": "Welcome \nto EOSIO Blockchain Team\n\n\nContribute by TrucNguyen\n\n\n\n\n\n\nSetting Up A Local Environment\n\n\n\n\n\n\nProject layout", 
+            "text": "Welcome \nto EOSIO Blockchain Team\n\n\nContribute by TrucNguyen\n\n\n\n\n\n\n\n\nSetting Up A Local Environment\n\n\n\n\n\n\nProject layout", 
             "title": "Home"
         }, 
         {
@@ -17,7 +17,7 @@
         }, 
         {
             "location": "/setup/index.html", 
-            "text": "Setting Up A Local Environment \nfor EOSIO\n\n\nWindow\n\n\n\n\n\n\nSetup virtual box On Window \nEOSIO dawn3\n setup env on Virtual box, download source \nubuntu iso\n\n\n\n\n\n\nEOS.IO development on window\n (ubuntu on window)\n\n\n\n\n\n\nUbuntu 16.04\n\n\n\n\n\n\nManual installation\n of the dependencies:\n\n\n\n\n\n\nBuild EOS\n and run a node:\n\n\n\n\n\n\nMacOS\n\n\n\n\n\n\nManual installation\n of the dependencies:\n\n\n\n\n\n\nBuild EOS\n and run a node:\n\n\n\n\n\n\nDocker\n\n\n\n\nFor running docker\n\n\n\n\nTest Development enviroment\n\n\n\n\nTest Development enviroment", 
+            "text": "Setting Up A Local Environment \nfor EOSIO\n\n\n\n\nWindow\n\n\n\n\n\n\nSetup virtual box On Window \nEOSIO dawn3\n setup env on Virtual box, download source \nubuntu iso\n\n\n\n\n\n\nEOS.IO development on window\n (ubuntu on window)\n\n\n\n\n\n\nUbuntu 16.04\n\n\n\n\n\n\nManual installation\n of the dependencies:\n\n\n\n\n\n\nBuild EOS\n and run a node:\n\n\n\n\n\n\nMacOS\n\n\n\n\n\n\nManual installation\n of the dependencies:\n\n\n\n\n\n\nBuild EOS\n and run a node:\n\n\n\n\n\n\nDocker\n\n\n\n\nFor running docker\n\n\n\n\nTest Development enviroment\n\n\n\n\nTest Development enviroment", 
             "title": "Setup"
         }, 
         {
