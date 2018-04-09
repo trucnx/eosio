@@ -2,43 +2,48 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
+            "text": "Welcome to EOSIO Blockchain Team\n\n\nContribute by TrucNguyen\n\n\nEOSIO Setup Guideline\n\n\nProject layout", 
             "title": "Home"
         }, 
         {
-            "location": "/#welcome-to-mkdocs", 
-            "text": "For full documentation visit  mkdocs.org .", 
-            "title": "Welcome to MkDocs"
+            "location": "/#welcome-to-eosio-blockchain-team", 
+            "text": "Contribute by TrucNguyen", 
+            "title": "Welcome to EOSIO Blockchain Team"
         }, 
         {
-            "location": "/#commands", 
-            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.", 
-            "title": "Commands"
+            "location": "/#eosio-setup-guideline", 
+            "text": "", 
+            "title": "EOSIO Setup Guideline"
         }, 
         {
             "location": "/#project-layout", 
-            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
+            "text": "", 
             "title": "Project layout"
         }, 
         {
+            "location": "/setup/", 
+            "text": "T\u1ed5ng h\u1ee3p c\u00e1c ph\u01b0\u01a1ng ph\u00e1p \u0111\u1ec3 Team c\u00f3 th\u1ec3 setup m\u00f4i tr\u01b0\u1eddng development EOSIO\n\n\n\n\n\n\nWindow\n\n    Setup on virtual box (Window)\n        EOSIO dawn3 setup env on Virtual box\n            https://www.youtube.com/watch?v=glB6UPHo1rA\n            ubuntu iso : http://releases.ubuntu.com/16.04.4/\n\n\nEOS.IO development on window (ubuntu on window): https://goo.gl/SmRHWR\n\n\n\n\n\n\n\nUbuntu 16.04\n\n        Manual installation of the dependencies: \n            https://github.com/EOSIO/eos/wiki/Local-Environment\u2026\n\n\nBuild EOS and run a node: https://github.com/EOSIO/eos/wiki/Local-Environment\u2026\n\n\n\n\n\n\n\nMacOS\n\n        https://github.com/EOSIO/eos/wiki/Local-Environment\u2026\n\n\nBuild EOS and run a node: https://github.com/EOSIO/eos/wiki/Local-Environment\u2026\n\n\n\n\n\n\n\nDocker\n\n        https://github.com/EOSIO/eos/wiki/Local-Environment#3-docker\n\n\n\n\n\n\nVerify dev env\n\n        https://github.com/\u2026/Tutorial-Getting-Started-With-Contracts", 
+            "title": "Setup Guide"
+        }, 
+        {
+            "location": "/setup/#tong-hop-cac-phuong-phap-e-team-co-the-setup-moi-truong-development-eosio", 
+            "text": "Window \n    Setup on virtual box (Window)\n        EOSIO dawn3 setup env on Virtual box\n            https://www.youtube.com/watch?v=glB6UPHo1rA\n            ubuntu iso : http://releases.ubuntu.com/16.04.4/  EOS.IO development on window (ubuntu on window): https://goo.gl/SmRHWR    Ubuntu 16.04 \n        Manual installation of the dependencies: \n            https://github.com/EOSIO/eos/wiki/Local-Environment\u2026  Build EOS and run a node: https://github.com/EOSIO/eos/wiki/Local-Environment\u2026    MacOS \n        https://github.com/EOSIO/eos/wiki/Local-Environment\u2026  Build EOS and run a node: https://github.com/EOSIO/eos/wiki/Local-Environment\u2026    Docker \n        https://github.com/EOSIO/eos/wiki/Local-Environment#3-docker    Verify dev env \n        https://github.com/\u2026/Tutorial-Getting-Started-With-Contracts", 
+            "title": "T\u1ed5ng h\u1ee3p c\u00e1c ph\u01b0\u01a1ng ph\u00e1p \u0111\u1ec3 Team c\u00f3 th\u1ec3 setup m\u00f4i tr\u01b0\u1eddng development EOSIO"
+        }, 
+        {
             "location": "/about/", 
-            "text": "Neve Erebi Agenore indicio\n\n\nSaxo inque sub imagine\n\n\nLorem markdownum, hic dolores acumina\n\nlustro\n, stantibus Alpheos et\nvero utile in illis, sub. Memorabile aliis tamen sorores, rapit, ut lora\nstimulis tabuit.\n\n\nDe \ntempore vecte solum\n, nux suum sanguine. Cepheni mergum, sic cum audito\nultimus inops monstra, ideoque crescunt Cypron in illi. Sed vestros concipias\nsacri, et tibi silvis, si voces. Vos et nullique \ncedentes hanc\n; Libys fulvos\nabsumpsit \nnatos adspeximus tandem\n circumfluus quicquam;\ndicunt frena.\n\n\n\n\nAnimalia adquirit concedimus lapsis\n\n\nEnim cineres\n\n\nExanimi frenato\n\n\n\n\nProceres quae, attollit gelidum, \net quod\n qua, \nInachidas\n. Neque\nproximitas \npendent per\n silvis nescius \nsubvolat\ninaequales fata\n. \nMorati vidistis\n. Omnia quem Ixione\nmaesta quicumque erratica.\n\n\nInquit ante pressit sudem subsedit\n\n\nTraxit capuloque, tremulis laborem. Poscit luna nurusque labe: tua non\ncontigerant caelo cernimus se senis \nDelphosque invitusque\n tetigisse partique\nCiconum commissaque. Confessis vulnus crocique: scinditur umbras, sol agri\nfelix.\n\n\nTenuere pariter versantes Dictaeaque decuit. Non quos quoque adsum tenet\ngravidamve flammas pedem. Revelli ubi heros \net passo mandata\n servitii tot,\n\nelectro\n mea.\n\n\n\n\nParva acutis versus\n\n\nEt corpore huic\n\n\nQuod hic\n\n\nNati ora me ad\n\n\n\n\nVetui condidit animalia et ignes concubiturus uteri peperisse nimium divitiis\nripa. Antiqua est illud illo restitit trunco ut paelice, \nlatius Laestrygonis\ncausa\n, ut.", 
+            "text": "TrucNguyen\n\n\nIt doesn't matter how slowly you go, so long as you do not stop.", 
             "title": "About"
         }, 
         {
-            "location": "/about/#neve-erebi-agenore-indicio", 
+            "location": "/about/#trucnguyen", 
             "text": "", 
-            "title": "Neve Erebi Agenore indicio"
+            "title": "TrucNguyen"
         }, 
         {
-            "location": "/about/#saxo-inque-sub-imagine", 
-            "text": "Lorem markdownum, hic dolores acumina lustro , stantibus Alpheos et\nvero utile in illis, sub. Memorabile aliis tamen sorores, rapit, ut lora\nstimulis tabuit.  De  tempore vecte solum , nux suum sanguine. Cepheni mergum, sic cum audito\nultimus inops monstra, ideoque crescunt Cypron in illi. Sed vestros concipias\nsacri, et tibi silvis, si voces. Vos et nullique  cedentes hanc ; Libys fulvos\nabsumpsit  natos adspeximus tandem  circumfluus quicquam;\ndicunt frena.   Animalia adquirit concedimus lapsis  Enim cineres  Exanimi frenato   Proceres quae, attollit gelidum,  et quod  qua,  Inachidas . Neque\nproximitas  pendent per  silvis nescius  subvolat\ninaequales fata .  Morati vidistis . Omnia quem Ixione\nmaesta quicumque erratica.", 
-            "title": "Saxo inque sub imagine"
-        }, 
-        {
-            "location": "/about/#inquit-ante-pressit-sudem-subsedit", 
-            "text": "Traxit capuloque, tremulis laborem. Poscit luna nurusque labe: tua non\ncontigerant caelo cernimus se senis  Delphosque invitusque  tetigisse partique\nCiconum commissaque. Confessis vulnus crocique: scinditur umbras, sol agri\nfelix.  Tenuere pariter versantes Dictaeaque decuit. Non quos quoque adsum tenet\ngravidamve flammas pedem. Revelli ubi heros  et passo mandata  servitii tot, electro  mea.   Parva acutis versus  Et corpore huic  Quod hic  Nati ora me ad   Vetui condidit animalia et ignes concubiturus uteri peperisse nimium divitiis\nripa. Antiqua est illud illo restitit trunco ut paelice,  latius Laestrygonis\ncausa , ut.", 
-            "title": "Inquit ante pressit sudem subsedit"
+            "location": "/about/#it-doesnt-matter-how-slowly-you-go-so-long-as-you-do-not-stop", 
+            "text": "", 
+            "title": "It doesn't matter how slowly you go, so long as you do not stop."
         }
     ]
 }
