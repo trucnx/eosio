@@ -1,13 +1,16 @@
-## Guideline setup development for EOSIO BC
+# Setup guideline <small>for EOSIO</small>
 
-* `Window`
-    
-    Setup on virtual box (Window)
-        
-        [EOSIO dawn3 setup env on Virtual box] (https://www.youtube.com/watch?v=glB6UPHo1rA)
-            ubuntu iso : http://releases.ubuntu.com/16.04.4/
+## Window
 
-        EOS.IO development on window (ubuntu on window): https://goo.gl/SmRHWR
+* Setup virtual box On Window [EOSIO dawn3][1] setup env on Virtual box, refer [ubuntu iso][2]
+
+* [EOS.IO development on window][3] (ubuntu on window)
+
+[![Material for MkDocs](assets/images/material.png)](assets/images/material.png)
+
+  [1]: https://www.youtube.com/watch?v=glB6UPHo1rA
+  [2]: http://releases.ubuntu.com/16.04.4/
+  [3]: https://goo.gl/SmRHWR
 
 * `Ubuntu 16.04`
         
