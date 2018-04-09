@@ -52,7 +52,7 @@
         }, 
         {
             "location": "/getting_started/index.html", 
-            "text": "Getting started\n\n\nEOSIO Helloworld contract\n\n\n\n\n\n\nyoutube link", 
+            "text": "Getting started\n\n\nEOSIO Helloworld contract\n\n\n\n\n\n\nYoutube link", 
             "title": "Getting started"
         }, 
         {
@@ -62,7 +62,7 @@
         }, 
         {
             "location": "/getting_started/index.html#eosio-helloworld-contract", 
-            "text": "youtube link", 
+            "text": "Youtube link", 
             "title": "EOSIO Helloworld contract"
         }, 
         {
